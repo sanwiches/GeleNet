@@ -145,6 +145,10 @@ class KTM(nn.Module):
     def __init__(self, channel=32):
         super(KTM, self).__init__()
 
+        # Non-negative learnable strength for the NAMLab same-region prior.
+        # A small initial value keeps the starting point close to original KTM.
+        self.region_strength = nn.Parameter(torch.tensor(-2.0))
+
         self.query_conv = nn.Conv2d(channel, channel // 2, kernel_size=1)
         self.key_conv = nn.Conv2d(channel, channel // 2, kernel_size=1)
         self.value_conv_2 = nn.Conv2d(channel, channel, kernel_size=1)
@@ -171,7 +175,7 @@ class KTM(nn.Module):
                                       )
 
 
-    def forward(self, x2, x3): # V
+    def forward(self, x2, x3, region_ids=None): # V
         x_sum = x2 + x3 # Q
         x_mul = x2 * x3 # K
 
@@ -186,6 +190,27 @@ class KTM(nn.Module):
         proj_query = self.query_conv(x_sum).view(m_batchsize, -1, width * height).permute(0, 2, 1)
         proj_key = self.key_conv(x_mul).view(m_batchsize, -1, width * height)
         energy = torch.bmm(proj_query, proj_key)
+
+        # Optional NAMLab region labels: BxHxW or Bx1xHxW.
+        # Nearest-neighbor resizing preserves discrete region identities.
+        if region_ids is not None:
+            if region_ids.dim() == 4 and region_ids.size(1) == 1:
+                region_ids = region_ids[:, 0]
+            if region_ids.dim() != 3:
+                raise ValueError("region_ids must have shape BxHxW or Bx1xHxW")
+            if region_ids.shape[0] != m_batchsize:
+                raise ValueError("region_ids batch size must match feature batch size")
+            if region_ids.shape[-2:] != (height, width):
+                region_ids = F.interpolate(
+                    region_ids.unsqueeze(1).float(),
+                    size=(height, width),
+                    mode="nearest"
+                ).squeeze(1).long()
+            flat_regions = region_ids.reshape(m_batchsize, -1)
+            same_region = flat_regions.unsqueeze(2).eq(flat_regions.unsqueeze(1))
+            region_bias = same_region.to(dtype=energy.dtype)
+            energy = energy + F.softplus(self.region_strength) * region_bias
+
         attention = self.softmax(energy)
 
         proj_value_2 = self.value_conv_2(x2).view(m_batchsize, -1, width * height)
@@ -273,7 +298,7 @@ class GeleNet(nn.Module):
 
 
 
-    def forward(self, x):
+    def forward(self, x, region_ids=None):
 
         # backbone
         pvt = self.backbone(x)
@@ -295,7 +320,7 @@ class GeleNet(nn.Module):
         x1_DSWSAM_1 = self.DSWSAM_1(x1_ori) # 32x88x88
 
         # KTM for x2_nor and x3_nor
-        x23_KTM = self.KTM_23(x2_nor, x3_nor) # 32x22x22
+        x23_KTM = self.KTM_23(x2_nor, x3_nor, region_ids=region_ids) # 32x22x22
 
 
         prediction = self.upsample_4(self.PDecoder(x4_SWSAM_4, x23_KTM, x1_DSWSAM_1))
