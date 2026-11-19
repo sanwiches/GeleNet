@@ -1,3 +1,7 @@
+# Experiment versions
+
+Canonical branches: **V1** original GeleNet; **V2** scribble Partial BCE baseline; **V3** V2 plus NAMLab-aware KTM (training integration pending). See [version status and validation](docs/experiment_versions.md). Legacy branches are retained for provenance.
+
 # GeleNet
 This project provides the code and results for 'Salient Object Detection in Optical Remote Sensing Images Driven by Transformer', IEEE TIP, 2023. [IEEE](https://ieeexplore.ieee.org/document/10254506) and [arxiv](https://arxiv.org/abs/2309.08206) [Homepage](https://mathlee.github.io/)
 
