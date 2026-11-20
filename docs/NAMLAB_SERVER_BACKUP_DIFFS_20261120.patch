@@ -1,0 +1,395 @@
+--- run_dataset.cpp.before_k18_diag_20261118
++++ run_dataset.cpp
+@@ -35,13 +35,13 @@
+ 
+ 	/* Representation */
+ 	param["homogeneous"] = 0;			// Dissimilarity between two pixels. 0:Euclidean Eq.(10) 1:Gouraud Eq. (11)
+-	param["k"] = 2.0;					// Threshold in Eq. (10) or Eq. (11)
++	param["k"] = 1.8;					// Threshold in Eq. (10) or Eq. (11)
+ 	param["shape"] = 0;					// Shape of homogeneous blocks 0:Square 1:Diagonal 2:Vertical 3:Diagonal
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.9;					// Mean
+-	param["var"] = 3.0;					// Variance
++	param["u"] = 0.9;					// Mean
++	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+ 	param["alpha"] = 1.0;				//
+@@ -49,7 +49,7 @@
+ 	param["gamma"] = 1.97;				//
+ 	param["percent"] = 6.7;				// Scanning
+ 	param["si"] = 67.0;					//
+-	param["size"] = 4700.0;				//
++	param["size"] = 18800.0;				//
+ 	param["change"] = 197;				//
+ 
+ 	/* Display in terminal */
+--- run_dataset.cpp.before_size18800_20261119
++++ run_dataset.cpp
+@@ -40,7 +40,7 @@
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.5;					// Mean
++	param["u"] = 0.9;					// Mean
+ 	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+@@ -49,7 +49,7 @@
+ 	param["gamma"] = 1.97;				//
+ 	param["percent"] = 6.7;				// Scanning
+ 	param["si"] = 67.0;					//
+-	param["size"] = 9400.0;				//
++	param["size"] = 18800.0;				//
+ 	param["change"] = 197;				//
+ 
+ 	/* Display in terminal */
+--- run_dataset.cpp.before_size9400_20261119
++++ run_dataset.cpp
+@@ -40,8 +40,8 @@
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.5;					// Mean
+-	param["var"] = 3.0;					// Variance
++	param["u"] = 0.9;					// Mean
++	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+ 	param["alpha"] = 1.0;				//
+@@ -49,7 +49,7 @@
+ 	param["gamma"] = 1.97;				//
+ 	param["percent"] = 6.7;				// Scanning
+ 	param["si"] = 67.0;					//
+-	param["size"] = 4700.0;				//
++	param["size"] = 18800.0;				//
+ 	param["change"] = 197;				//
+ 
+ 	/* Display in terminal */
+--- run_dataset.cpp.before_u09_20261119
++++ run_dataset.cpp
+@@ -40,7 +40,7 @@
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.0;					// Mean
++	param["u"] = 0.9;					// Mean
+ 	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+--- run_dataset.cpp.before_u10_20261119
++++ run_dataset.cpp
+@@ -40,7 +40,7 @@
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.5;					// Mean
++	param["u"] = 0.9;					// Mean
+ 	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+--- run_dataset.cpp.before_u15_20261118
++++ run_dataset.cpp
+@@ -40,8 +40,8 @@
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.9;					// Mean
+-	param["var"] = 3.0;					// Variance
++	param["u"] = 0.9;					// Mean
++	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+ 	param["alpha"] = 1.0;				//
+@@ -49,7 +49,7 @@
+ 	param["gamma"] = 1.97;				//
+ 	param["percent"] = 6.7;				// Scanning
+ 	param["si"] = 67.0;					//
+-	param["size"] = 4700.0;				//
++	param["size"] = 18800.0;				//
+ 	param["change"] = 197;				//
+ 
+ 	/* Display in terminal */
+--- run_dataset.cpp.before_var25_20261119
++++ run_dataset.cpp
+@@ -40,8 +40,8 @@
+ 	param["ratio"] = 1.0;				// Maximum ratio of height to width of homogeneous blocks
+ 
+ 	/* Mergence */
+-	param["u"] = 1.5;					// Mean
+-	param["var"] = 3.0;					// Variance
++	param["u"] = 0.9;					// Mean
++	param["var"] = 2.5;					// Variance
+ 
+ 	/* Scanning */
+ 	param["alpha"] = 1.0;				//
+@@ -49,7 +49,7 @@
+ 	param["gamma"] = 1.97;				//
+ 	param["percent"] = 6.7;				// Scanning
+ 	param["si"] = 67.0;					//
+-	param["size"] = 9400.0;				//
++	param["size"] = 18800.0;				//
+ 	param["change"] = 197;				//
+ 
+ 	/* Display in terminal */
+--- Sources/ComputeDBC.cpp.before_namdbg
++++ Sources/ComputeDBC.cpp
+@@ -5,6 +5,8 @@
+ **************************************************/
+ #include "NAM.h"
+ 
++#include <cstdlib>
++#include <iostream>
+ void ComputeSumAndCount(const Mat &lab, const vector<vector<int>> &blockMap, int M, int N, int NumSeg, list<float> &Sum, list<float> &Count, const list<Vec2i> &adjacent)
+ {
+     unordered_map<long long, int> summatrix;
+@@ -47,10 +49,36 @@
+ 
+ void ComputeDBC(const list<float> &Sum, const list<float> &Count, list<float> &DBC)
+ {
++    long long positive = 0, zero = 0, other = 0;
++
++    for (float c : Count) {
++        if (c > 0) positive++;
++        else if (c == 0) zero++;
++        else other++;
++    }
++
++    std::cerr << "[NAMDBG ComputeDBC]"
++              << " Sum=" << Sum.size()
++              << " Count=" << Count.size()
++              << " positive=" << positive
++              << " zero=" << zero
++              << " other=" << other
++              << std::endl;
++
++    if (Sum.size() != Count.size()) {
++        std::cerr << "[NAMDBG FATAL] Sum/Count size mismatch!"
++                  << std::endl;
++        std::exit(87);
++    }
++
+     list<float>::const_iterator itrsum = Sum.begin();
+     list<float>::const_iterator itrcount = Count.begin();
+ 
+     for (; itrsum != Sum.end(); itrsum++, itrcount++)
+         if ((*itrcount) > 0)
+             DBC.push_back((*itrsum) / (*itrcount));
++    
++    std::cerr << "[NAMDBG DBC RESULT] DBC="
++              << DBC.size() << std::endl;
++
+ }
+--- Sources/ComputeThreshold.cpp.before_namdbg
++++ Sources/ComputeThreshold.cpp
+@@ -5,8 +5,21 @@
+ **************************************************/
+ #include "NAM.h"
+ 
++#include <cstdlib>
++#include <iostream>
+ void ComputeThreshold(const list<float> &Dist, const float &Percent,float &THRESHOLD)
+ {
++    std::cerr << "[NAMDBG ComputeThreshold]"
++              << " Dist=" << Dist.size()
++              << " Percent=" << Percent
++              << std::endl;
++
++    if (Dist.empty()) {
++        std::cerr << "[NAMDBG FATAL] Dist is empty!"
++                  << std::endl;
++        std::exit(86);
++    }
++
+ 	//sort Dist in an ascending order
+ 	vector<float> RhoN;
+ 	for (auto &x : Dist)
+--- Sources/NAM.cpp.before_k18_diag_20261118
++++ Sources/NAM.cpp
+@@ -4,6 +4,7 @@
+ describe: NAM based hierarchical image segmentation algorithm.
+ **************************************************/
+ #include "NAM.h"
++#include <iostream>
+ #include "rgb2lab.h"
+ 
+ void NAM(unordered_map<string, double> &param, const string &imgPath, vector<Mat> &map, vector<Mat> &result)
+@@ -50,10 +51,19 @@
+ 	}
+ 
+ 	representation(param,lab,P,R,blockMap);
++    std::cerr << "[NAMDBG] after representation: P.size="
++              << P.size() << ", R.size=" << R.size() << std::endl;
+ 
+ 	mergence(param,P,R,NumSeg,blockMap);
++    std::cerr << "[NAMDBG] after mergence: NumSeg="
++              << NumSeg << std::endl;
+ 
+ 	removeRemnant(param,lab,NumSeg,blockMap,region,map,result,adjacent,adjacentList);
++    std::cerr << "[NAMDBG] after removeRemnant: NumSeg="
++              << NumSeg << ", region.size=" << region.size()
++              << ", adjacent.size=" << adjacent.size()
++              << ", adjacentList.size=" << adjacentList.size()
++              << std::endl;
+ 
+ 	scanning(param,region,blockMap,adjacentList,lab,img,map,result);
+ }
+--- Sources/removeRemnant.cpp.before_branch150_20261119
++++ Sources/removeRemnant.cpp
+@@ -23,57 +23,79 @@
+     ComputeRegion(lab,blockMap,region,NumSeg,T,D);
+     ComputeNeighbor(blockMap, M, N, NumSeg, adjacent);
+ 
+-    int flag = 0;
+-    for (auto &x : region)
+-        if (x.area < SIZE)
+-            flag = 1;
+-    while (flag)
++
++    // Conditional remnant merging for abnormal images.
++    // Keep at least saveHir+1 regions so scanning can save all levels.
++    const int REMNANT_SKIP_THRESHOLD = 150;
++
++    const bool skipRemnantMerge =
++        (NumSeg > param["saveHir"] &&
++         NumSeg < REMNANT_SKIP_THRESHOLD);
++
++    std::cout << "[NAMDBG REMNANT BRANCH] "
++              << "NumSeg_after_mergence=" << NumSeg
++              << " saveHir=" << param["saveHir"]
++              << " threshold=" << REMNANT_SKIP_THRESHOLD
++              << " branch="
++              << (skipRemnantMerge ? "SKIP_MERGE" : "ORIGINAL")
++              << std::endl;
++
++    if (!skipRemnantMerge)
+     {
+-        if (NumSeg <= param["saveHir"])
++        int flag = 0;
++        for (auto &x : region)
++            if (x.area < SIZE)
++                flag = 1;
++        while (flag)
+         {
+-            //Output label matrix
+-            Mat m = Mat::zeros(M, N, CV_32FC1);
++            if (NumSeg <= param["saveHir"])
++            {
++                //Output label matrix
++                Mat m = Mat::zeros(M, N, CV_32FC1);
++                for (int i = 0; i < M; i++)
++                    for (int j = 0; j < N; j++)
++                        m.at<float>(i, j) = blockMap[i][j] + 1;
++                map.push_back(std::move(m));
++                m.release();
++
++                if (param["mode"] == 1) {
++                    //Output color image
++                    Mat r = Mat::zeros(M, N, CV_32FC3);
++                    for (int i = 0; i < M; i++)
++                        for (int j = 0; j < N; j++)
++                            r.at<Vec3f>(i, j) = region[blockMap[i][j]].lab;
++                    cvtColor(r, r, COLOR_Lab2BGR);
++                    r.convertTo(r, CV_8UC3, 255.0, 0);
++                    result.push_back(std::move(r));
++                    r.release();
++                }
++            }
++            flag = 0;
++            vector<int> LabelC(NumSeg);
++            vector<float> DC;
++
++            ComputeDC(region, adjacent, DC);
++            MergeSmallRegion(region, DC, adjacent, LabelC, NumSeg, SIZE);
++            vector<int>::iterator maxpos = max_element(LabelC.begin(), LabelC.end());
++            NumSeg = *maxpos + 1;
++
++            UpdateNeighbor(adjacent, LabelC, NumSeg);
++            UpdateRegion(region, LabelC, NumSeg, T, D);
++
++            //update blockMap
+             for (int i = 0; i < M; i++)
+                 for (int j = 0; j < N; j++)
+-                    m.at<float>(i, j) = blockMap[i][j] + 1;
+-            map.push_back(std::move(m));
+-            m.release();
++                    blockMap[i][j] = LabelC[blockMap[i][j]];
+ 
+-            if (param["mode"] == 1) {
+-                //Output color image
+-                Mat r = Mat::zeros(M, N, CV_32FC3);
+-                for (int i = 0; i < M; i++)
+-                    for (int j = 0; j < N; j++)
+-                        r.at<Vec3f>(i, j) = region[blockMap[i][j]].lab;
+-                cvtColor(r, r, COLOR_Lab2BGR);
+-                r.convertTo(r, CV_8UC3, 255.0, 0);
+-                result.push_back(std::move(r));
+-                r.release();
+-            }
++            for (auto &x : region)
++                if (x.area < SIZE)
++                {
++                    flag = 1;
++                    break;
++                }
+         }
+-        flag = 0;
+-        vector<int> LabelC(NumSeg);
+-        vector<float> DC;
+ 
+-        ComputeDC(region, adjacent, DC);
+-        MergeSmallRegion(region, DC, adjacent, LabelC, NumSeg, SIZE);
+-        vector<int>::iterator maxpos = max_element(LabelC.begin(), LabelC.end());
+-        NumSeg = *maxpos + 1;
+ 
+-        UpdateNeighbor(adjacent, LabelC, NumSeg);
+-        UpdateRegion(region, LabelC, NumSeg, T, D);
+-
+-        //update blockMap
+-        for (int i = 0; i < M; i++)
+-            for (int j = 0; j < N; j++)
+-                blockMap[i][j] = LabelC[blockMap[i][j]];
+-
+-        for (auto &x : region)
+-            if (x.area < SIZE)
+-            {
+-                flag = 1;
+-                break;
+-            }
+     }
+ 
+     for(auto &x:adjacent)
+--- Sources/scanning.cpp.before_namdbg
++++ Sources/scanning.cpp
+@@ -5,6 +5,7 @@
+ **************************************************/
+ 
+ #include "NAM.h"
++#include <iostream>
+ #include "unionFind.h"
+ #include <mat.h>
+ 
+@@ -133,6 +134,21 @@
+ 	ComputeDW(region, adjacent, DW);
+ 	ComputeDT(DAB, DW, DT);
+ 	ComputeDN(region, adjacent, DN, t, ThNc);
++        
++        std::cerr << "[NAMDBG INITIAL]"
++                  << " NumSeg=" << NumSeg
++                  << " adjacent=" << adjacent.size()
++                  << " Sum=" << Sum.size()
++                  << " Count=" << Count.size()
++                  << " SI=" << SI.size()
++                  << " DBC=" << DBC.size()
++                  << " DC=" << DC.size()
++                  << " DAB=" << DAB.size()
++                  << " DW=" << DW.size()
++                  << " DT=" << DT.size()
++                  << " DN=" << DN.size()
++                  << std::endl;
++
+ 	SumDC = SumDBC = SumDT = 0;
+ 	for (auto &x : DC)
+ 		SumDC += x;

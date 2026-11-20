@@ -1,0 +1,12 @@
+{
+  "dataset": "EORSSD-S",
+  "source_manifest": "/home/data2/XintongHu/GeleNet/datasets/weak_prepared/EORRSD-S/manifest.json",
+  "source_regions": "/home/data2/XintongHu/GeleNet/experiments/namlab_eorrssd_tuned_20261119/regions",
+  "source_model": "/home/data2/XintongHu/GeleNet/code/GeleNet/model",
+  "selected_level_one_based": 20,
+  "samples": 1400,
+  "loss": "Partial BCE",
+  "RC": false,
+  "dense_gt_used": false,
+  "training_started": false
+}

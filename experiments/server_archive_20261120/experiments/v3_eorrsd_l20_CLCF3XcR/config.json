@@ -1,0 +1,22 @@
+{
+  "experiment": "V3_EORSSD-S_NAMLab_L20",
+  "seed": 42,
+  "dataset": "EORSSD-S",
+  "manifest": "/home/data2/XintongHu/GeleNet/experiments/v3_eorrsd_l20_CLCF3XcR/code/manifest.json",
+  "namlab_level_one_based": 20,
+  "loss": "Partial BCE",
+  "RC": false,
+  "initialization": "PVT backbone pretrained; other layers newly initialized",
+  "epoch_argument": 45,
+  "actual_epochs": 44,
+  "batchsize": 8,
+  "trainsize": 352,
+  "lr": 0.0001,
+  "decay_epoch": 30,
+  "decay_rate": 0.1,
+  "clip": 0.5,
+  "num_workers": 0,
+  "cuda_visible_devices": "4",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "torch": "1.9.0+cu111"
+}

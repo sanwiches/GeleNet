@@ -1,0 +1,31 @@
+{
+  "binary_sha256": "c7b4779cde664c91fec1fb097ce9bb07d0ce671e3158d22e5e592742465d16c9",
+  "command": [
+    "/home/data2/XintongHu/GeleNet/experiments/namlab_reproduce_check_3aIPoO1o/program/run_dataset",
+    "/home/data2/XintongHu/GeleNet/experiments/namlab_reproduce_check_3aIPoO1o/input",
+    "/home/data2/XintongHu/GeleNet/experiments/namlab_reproduce_check_3aIPoO1o/regions",
+    "0",
+    "60"
+  ],
+  "samples": [
+    {
+      "image": "0001",
+      "old_layers": 60,
+      "new_layers": 60,
+      "level20_membership_identical": true
+    },
+    {
+      "image": "1029",
+      "old_layers": 60,
+      "new_layers": 60,
+      "level20_membership_identical": true
+    },
+    {
+      "image": "1034",
+      "old_layers": 41,
+      "new_layers": 41,
+      "level20_membership_identical": true
+    }
+  ],
+  "passed": true
+}

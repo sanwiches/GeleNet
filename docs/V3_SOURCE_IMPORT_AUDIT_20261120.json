@@ -1,0 +1,32 @@
+{
+  "verified_files": 71,
+  "python_files": 24,
+  "archive_sha256": "e783e8a978da3abfcfa3589ef6ae4ec6e16588c7b58270e33b1f7ff759944a46",
+  "code_comparison": [
+    {
+      "path": "model/GeleNet_models.py",
+      "both_run_snapshots_identical": true,
+      "git_blob_sha": "9ebd559fdce660caae3fd5a3c73d9ea4a38544c8"
+    },
+    {
+      "path": "model/pvtv2.py",
+      "both_run_snapshots_identical": true,
+      "git_blob_sha": "f30c984ef93fcd1752974a2b68e8536622e59118"
+    },
+    {
+      "path": "weak_data.py",
+      "both_run_snapshots_identical": true,
+      "git_blob_sha": "cab25f76c53c95837ac3ef9ab6291f58d9fd8ced"
+    },
+    {
+      "path": "weak_loss.py",
+      "both_run_snapshots_identical": true,
+      "git_blob_sha": "edd22d0509891b14087b7bc6627519b5fd4b7d40"
+    },
+    {
+      "path": "utils.py",
+      "both_run_snapshots_identical": true,
+      "git_blob_sha": "83b84c7db5d03cde5a926deef9993e2980224fb5"
+    }
+  ]
+}

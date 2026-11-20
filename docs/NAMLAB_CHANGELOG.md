@@ -1,3 +1,9 @@
+# Current status update 2026-11-20
+
+The fixed-level server training loader/entry point, run snapshots, patched C++ and backups are now imported. See [source import audit](V3_SERVER_SOURCE_IMPORT_20261120.md). Earlier statements below about missing source reflect the 2026-11-19 audit and are retained as historical evidence, not the current repository status. Completed server runs and evaluation results are documented separately. Fresh local GPU/C++ reproduction remains unverified.
+
+---
+
 # V3 NAMLab modification and evidence record
 
 Audit date: 2026-11-19. V1=original GeleNet; V2=scribble Partial BCE; V3=V2 plus NAMLab membership prior in KTM. V3 remains incomplete as a region-aware training system.

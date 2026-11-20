@@ -1,0 +1,357 @@
+[
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/model/GeleNet_models.py",
+    "bytes": 12926,
+    "sha256": "823f4e1048751609c5453785bed326a7152631f5fd9dd0b5c8e385fb5a8de512"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/model/__init__.py",
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/model/pvtv2.py",
+    "bytes": 17279,
+    "sha256": "bad9a96bca9841679b5f7a5a97bf9bbc4239611fb4be6d0ba0783f64e4f9dc8c"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/provenance.json",
+    "bytes": 448,
+    "sha256": "911c9adf4a6fce543a1451ff6e216b20cac9e773ece8ef18b0e58a028c8c5fba"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/region_data.py",
+    "bytes": 1139,
+    "sha256": "2c0d7ac7de8d6203c7c2118eb5159b5f8c5d5d0f544a27ffe46df7c76e10f8ff"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/train_v3_GeleNet.py",
+    "bytes": 3399,
+    "sha256": "6555be9c78280523593814ce09edfd2c556535efbca578d3574cae6a324b1927"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/utils.py",
+    "bytes": 529,
+    "sha256": "bad3298947d24bf14d58f9804183ca4a44935d2938e0160855cfb9f155cb9951"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/weak_data.py",
+    "bytes": 2991,
+    "sha256": "0356027cb85660d6daa0982dd026fceef761ee8144a5d8ff916cdd4031fc4725"
+  },
+  {
+    "path": "code/GeleNet_v3_eorrsd_l20_WoyMz2Ah/weak_loss.py",
+    "bytes": 1031,
+    "sha256": "f784483f9a51d0b2c9fc2a376535b99544fa0eca552d4c0a0e8da74799857c6e"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/command.json",
+    "bytes": 288,
+    "sha256": "faa745a0947c1d1f425c7324a1652b73091f2523fed3970a0b3cf563a00713c6"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/comparison.json",
+    "bytes": 822,
+    "sha256": "4d3b708c4bc6fdf434b24d0706d038146a67f35d10bf3246c2eef8eece801c3f"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/CMakeLists.txt",
+    "bytes": 744,
+    "sha256": "2803ece092f5ad0fddb338c35593594fdaa5a0e01c6b7446da7407df888d4506"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/AccumulateRangeofTexture.cpp",
+    "bytes": 643,
+    "sha256": "1b563b6d8f03558d01081005309db683e10bb46c59aec905c76f01ac0bcfe195"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeDBC.cpp",
+    "bytes": 3363,
+    "sha256": "286072039fff3b461b76d16eff0297013cc8325d81fce4eb3e12c59531123a7f"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeDBC.cpp.before_namdbg",
+    "bytes": 2636,
+    "sha256": "5ce7a29f071978359b6a543f91778452c6942e07c019c6949cbd1e9cfbfc797a"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeDC.cpp",
+    "bytes": 1057,
+    "sha256": "79303bb01257e9f4f47e365e29b26a525c966bc16461510854974eca31753566"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeDN.cpp",
+    "bytes": 619,
+    "sha256": "a5002ba81d7dffdecc2ece3dff57470542696a727156ac593b0dfb8f3e79948e"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeDT.cpp",
+    "bytes": 1452,
+    "sha256": "3b6c34fcf492ccb6f38b595eea9e95f49a942401560eeb942f68e1956f12f0fe"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeDist.cpp",
+    "bytes": 1622,
+    "sha256": "3579ef15a3f39ccd323e077015ea32a3f94a6d5c2a9f429102deefc91b881c27"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeNeighbor.cpp",
+    "bytes": 1957,
+    "sha256": "1f57f6655647b3bde1113d6e889012624aa4a592de324005baf8b1cb02b25106"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeRegion.cpp",
+    "bytes": 3010,
+    "sha256": "1def0fced9c57d9356224abcd02dd83cda787f4ab43157b6e1d291ca232fa4cf"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeSI.cpp",
+    "bytes": 3393,
+    "sha256": "5a72c6a8e8d50f9357032e26cfa72979d09fe141312b6c508f7909a84da697fb"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeThreshold.cpp",
+    "bytes": 1037,
+    "sha256": "89f4df81b6e1f77a190fcc9de1573c171aa8d9e407b556a92b178381e0217e91"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/ComputeThreshold.cpp.before_namdbg",
+    "bytes": 704,
+    "sha256": "bd30d87b2407aeab03e7c390e903d55321489f8c4d3382c69e72816417f8a3d9"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/NAM.cpp",
+    "bytes": 2032,
+    "sha256": "f0c4ca37f150a9874a842052dfc44fbfb5dae652bacf91779dfdea40898b3e7d"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/NAM.cpp.before_k18_diag_20261118",
+    "bytes": 1592,
+    "sha256": "613adc112dc6c6c6f3e9dd7e991fffb75abbbd68c37e3df7b8f75f178a9c483f"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/NAM.h",
+    "bytes": 4573,
+    "sha256": "90581b1d9e3b90fb0ca294a2b1cadc6f227c6240d555fdd6ed5c4baf36d7b2e0"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/TextureCascadeWithSlidingWindow.cpp",
+    "bytes": 1615,
+    "sha256": "f13a105ba9e3db7729d45101ac83dcddcb69a4f66bbdae0f7b868784d93dc38f"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/TextureNormalized.cpp",
+    "bytes": 555,
+    "sha256": "faa26625e2d5e7e3f289763af480796ae23a8e551c65ae268eaccfa95f8e7bec"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/UpdateProperty.cpp",
+    "bytes": 4398,
+    "sha256": "6229d6002c03e441ca1165f831d263a67ea10db45b9b8b6b72ca065b37308a35"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/WLD.cpp",
+    "bytes": 4663,
+    "sha256": "f666726c245a4fbab7cd03f11bcb2a982584714ccdd83934c7b0e9ebc542101f"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/convertToMat.h",
+    "bytes": 1219,
+    "sha256": "f0daaa799175174aae0aa6eed422d5c3518fe57cfec152c1e9837667f89c15f6"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/getImageList.h",
+    "bytes": 957,
+    "sha256": "998b00d8172f605f13f9a3a48631cf2aa7e41014f1851b7f7636603339ca3af2"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/mergence.cpp",
+    "bytes": 4933,
+    "sha256": "bb21079941c5aff9d40c0f1c674b83dfc435095275ed44260f060a7e3ddcdf06"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/removeRemnant.cpp",
+    "bytes": 4647,
+    "sha256": "86d9b149de04d008d5b528152af5c8dafd1bdd2d93c5cd1310a1c73e01186b73"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/removeRemnant.cpp.before_branch150_20261119",
+    "bytes": 3932,
+    "sha256": "ef20d3545c15620e62effa34b8d028133d0314276ea90564a988185e81e2d524"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/representation.cpp",
+    "bytes": 16328,
+    "sha256": "cc82174309088899739ea906910230971642d13a7695b521efb6d38230c88e50"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/rgb2lab.h",
+    "bytes": 1977,
+    "sha256": "9e8fb42911648e42251190c89b2201bc872fb9313cf83b6fea7053ad833d2dc8"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/scanning.cpp",
+    "bytes": 7823,
+    "sha256": "17fec85fb52457c14b3ae046df414110a6acc777c49133dfd718968f85fefde3"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/scanning.cpp.before_namdbg",
+    "bytes": 7245,
+    "sha256": "345d73a7ba69de6e2497af4ada6379b12074da1447497d3a002aa3cd26cf9aae"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/Sources/unionFind.h",
+    "bytes": 471,
+    "sha256": "d7c98a12a9fa8c780b48f5b6bb38dfce73c7d38a4f238b8d22b8e4bda287978b"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp",
+    "bytes": 4651,
+    "sha256": "9574433203af26b79823906504def4e6c4d5e7f618b205d62de6820c9bd038bc"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_k18_diag_20261118",
+    "bytes": 4798,
+    "sha256": "3c07b1ff7052e0da742c6936a6c173a4b5fe4e771ba9c3b0ce191b9c0a32b96a"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_size18800_20261119",
+    "bytes": 4650,
+    "sha256": "812b39ce2126da7a6989e43ce5934b80989211cc70aeeea373565f7a6dab3342"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_size9400_20261119",
+    "bytes": 4650,
+    "sha256": "cc5112b4fa174463f62e0f1a83c73e6f6d8930c3a6486b9010c04dac750428d1"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_u09_20261119",
+    "bytes": 4651,
+    "sha256": "8d954a3379c8efc7904584700de6092360ce5eed87ac256d6cc518afafe3884c"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_u10_20261119",
+    "bytes": 4651,
+    "sha256": "f5c4b4ecca7f361491f116763165932ba2715d947284cee43eadd1aceb613731"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_u15_20261118",
+    "bytes": 4650,
+    "sha256": "d8aa9f49388db3f06e77bd92610e9ae6082dea670401025707ed802696a2f01d"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_dataset.cpp.before_var25_20261119",
+    "bytes": 4650,
+    "sha256": "bb1b12da409bc330ee572382449160b6441761ec5afa8559362822307585c05e"
+  },
+  {
+    "path": "experiments/namlab_reproduce_check_3aIPoO1o/program/Linux/run_demo.cpp",
+    "bytes": 4062,
+    "sha256": "62856b5a92344745db9f90bd13ec75cf110bdddd07ff9ddf986997685f6766a1"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/model/GeleNet_models.py",
+    "bytes": 12926,
+    "sha256": "823f4e1048751609c5453785bed326a7152631f5fd9dd0b5c8e385fb5a8de512"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/model/__init__.py",
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/model/pvtv2.py",
+    "bytes": 17279,
+    "sha256": "bad9a96bca9841679b5f7a5a97bf9bbc4239611fb4be6d0ba0783f64e4f9dc8c"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/region_data.py",
+    "bytes": 1139,
+    "sha256": "2c0d7ac7de8d6203c7c2118eb5159b5f8c5d5d0f544a27ffe46df7c76e10f8ff"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/train_v3_GeleNet.py",
+    "bytes": 3399,
+    "sha256": "6555be9c78280523593814ce09edfd2c556535efbca578d3574cae6a324b1927"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/utils.py",
+    "bytes": 529,
+    "sha256": "bad3298947d24bf14d58f9804183ca4a44935d2938e0160855cfb9f155cb9951"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/weak_data.py",
+    "bytes": 2991,
+    "sha256": "0356027cb85660d6daa0982dd026fceef761ee8144a5d8ff916cdd4031fc4725"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/code/weak_loss.py",
+    "bytes": 1031,
+    "sha256": "f784483f9a51d0b2c9fc2a376535b99544fa0eca552d4c0a0e8da74799857c6e"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/config.json",
+    "bytes": 606,
+    "sha256": "3ca4e99db56f1bb16d4b32d325e7be2f532cb9f39fc93d597660243ec6c711a9"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/preparation_provenance.json",
+    "bytes": 448,
+    "sha256": "911c9adf4a6fce543a1451ff6e216b20cac9e773ece8ef18b0e58a028c8c5fba"
+  },
+  {
+    "path": "experiments/v3_eorrsd_l20_CLCF3XcR/status.json",
+    "bytes": 66,
+    "sha256": "c67f4332709dee18dfd5dd08ca60fbc2c772f1a060cbcbd7af4e417df2433758"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/model/GeleNet_models.py",
+    "bytes": 12926,
+    "sha256": "823f4e1048751609c5453785bed326a7152631f5fd9dd0b5c8e385fb5a8de512"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/model/__init__.py",
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/model/pvtv2.py",
+    "bytes": 17279,
+    "sha256": "bad9a96bca9841679b5f7a5a97bf9bbc4239611fb4be6d0ba0783f64e4f9dc8c"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/region_data.py",
+    "bytes": 1139,
+    "sha256": "2c0d7ac7de8d6203c7c2118eb5159b5f8c5d5d0f544a27ffe46df7c76e10f8ff"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/train_v3_GeleNet.py",
+    "bytes": 3399,
+    "sha256": "6555be9c78280523593814ce09edfd2c556535efbca578d3574cae6a324b1927"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/utils.py",
+    "bytes": 529,
+    "sha256": "bad3298947d24bf14d58f9804183ca4a44935d2938e0160855cfb9f155cb9951"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/weak_data.py",
+    "bytes": 2991,
+    "sha256": "0356027cb85660d6daa0982dd026fceef761ee8144a5d8ff916cdd4031fc4725"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/code/weak_loss.py",
+    "bytes": 1031,
+    "sha256": "f784483f9a51d0b2c9fc2a376535b99544fa0eca552d4c0a0e8da74799857c6e"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/config.json",
+    "bytes": 598,
+    "sha256": "a3c0d49353ad518fb2e9ad2ce31fee151de0f07a2e12528a2f25d33ebe6a065d"
+  },
+  {
+    "path": "experiments/v3_seor_l20_GPctpjR4/status.json",
+    "bytes": 66,
+    "sha256": "b3e078ba217a44a2a834f9fd92448961d8fb8a42844ba0e64e7b02d483efce8f"
+  }
+]
