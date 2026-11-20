@@ -1,5 +1,7 @@
 # V3 adaptive NAMLab scale pilot
 
+**数据划分与结果解释必读：** [为什么从1400全量训练改为1260训练加140内部验证，以及旧结果的比较边界](DATA_SPLIT_AND_COMPARISON_PROTOCOL.md)。此前已查看测试集结果；新增验证划分不能消除这一历史。
+
 This is an experimental extension of fixed-level V3, inspired by learning scale weights in Attention to Scale (Chen et al., CVPR2016), https://openaccess.thecvf.com/content_cvpr_2016/html/Chen_Attention_to_Scale_CVPR_2016_paper.html . It mixes NAMLab membership priors rather than image-pyramid predictions. No performance improvement is claimed.
 
 ## Three matched modes
