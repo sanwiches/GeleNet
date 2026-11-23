@@ -9,9 +9,39 @@ sys.path.insert(0,str(ROOT))
 from region_targets import propagate,quartile_levels
 from region_supervision_loss import region_supervision_loss
 from weak_loss import partial_bce_with_logits
+from region_weight_schedule import epoch_weights
 
 
 class RegionTests(unittest.TestCase):
+    def test_staged_schedule_boundaries_and_monotonicity(self):
+        self.assertTrue(np.allclose(epoch_weights(1),[.9,.02,.03,.05]))
+        self.assertTrue(np.allclose(epoch_weights(10),[.9,.02,.03,.05]))
+        self.assertTrue(np.allclose(epoch_weights(15),[.7,.06,.09,.15]))
+        self.assertTrue(np.allclose(epoch_weights(20),[.5,.1,.15,.25]))
+        self.assertTrue(np.allclose(epoch_weights(44),[.5,.1,.15,.25]))
+        values=np.array([epoch_weights(e) for e in range(1,45)])
+        self.assertTrue(np.allclose(values.sum(axis=1),1))
+        self.assertTrue((np.diff(values[:,0])<=1e-12).all())
+        self.assertTrue((np.diff(values[:,1:],axis=0)>=-1e-12).all())
+        self.assertTrue((values[:,3]>values[:,2]).all())
+        self.assertTrue((values[:,2]>values[:,1]).all())
+
+    def test_constant_and_invalid_schedule(self):
+        self.assertEqual(epoch_weights(1,'constant'),(.5,.1,.15,.25))
+        self.assertTrue(np.allclose(epoch_weights(1,warmup_epochs=0,ramp_epochs=1),[.5,.1,.15,.25]))
+        with self.assertRaises(ValueError): epoch_weights(0)
+        with self.assertRaises(ValueError): epoch_weights(1,ramp_epochs=0)
+
+    def test_scheduled_loss_contributions(self):
+        z=torch.zeros(1,1,2,2,requires_grad=True); y=torch.ones_like(z)
+        targets=torch.ones(1,3,2,2); masks=torch.ones_like(targets)
+        for epoch in (1,15,20,44):
+            weights=epoch_weights(epoch)
+            loss,terms=region_supervision_loss(z,y,y,targets,masks,weights)
+            self.assertTrue(torch.allclose(loss,sum(w*t for w,t in zip(weights,terms))))
+        with self.assertRaises(ValueError):
+            region_supervision_loss(z,y,y,targets,masks,[1,1,1,1])
+
     def test_levels(self):
         self.assertEqual(quartile_levels(60),[15,30,45])
         self.assertEqual(quartile_levels(10),[2,5,7])

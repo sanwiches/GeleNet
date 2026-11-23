@@ -9,6 +9,7 @@ from weak_data import WeakSalObjDataset
 from weak_loss import partial_bce_with_logits
 from region_supervision_data import RegionSupervisionDataset
 from region_supervision_loss import region_supervision_loss,WEIGHTS
+from region_weight_schedule import epoch_weights,INITIAL_WEIGHTS
 from utils import adjust_lr,clip_gradient
 
 
@@ -33,9 +34,16 @@ def main():
     ap.add_argument('--size',type=int,default=352)
     ap.add_argument('--lr',type=float,default=1e-4)
     ap.add_argument('--max-steps',type=int,default=0)
+    ap.add_argument('--weight-schedule',choices=['staged','constant'],default='staged')
+    ap.add_argument('--warmup-epochs',type=int,default=10)
+    ap.add_argument('--ramp-epochs',type=int,default=10)
     args=ap.parse_args()
     if not torch.cuda.is_available(): ap.error('CUDA required')
     if args.epochs<1 or args.max_steps<0 or args.batchsize<1: ap.error('Invalid counts')
+    if args.warmup_epochs<0 or args.ramp_epochs<1: ap.error('Invalid weight schedule')
+    if (args.mode=='region' and args.weight_schedule=='staged' and not args.max_steps
+            and args.epochs<args.warmup_epochs+args.ramp_epochs):
+        ap.error('Full region run must reach final scheduled weights')
     random.seed(args.seed); np.random.seed(args.seed)
     torch.manual_seed(args.seed); torch.cuda.manual_seed_all(args.seed)
     torch.backends.cudnn.deterministic=True; torch.backends.cudnn.benchmark=False
@@ -52,11 +60,14 @@ def main():
         config.update(architecture='V2 unmodified GeleNet',KTM_region_bias=False,RC=False,
             train_count=len(train),val_count=len(val),torch=torch.__version__,
             validation='Original held-out scribble BCE only',smoke=bool(args.max_steps),
-            loss_weights=list(WEIGHTS) if args.mode=='region' else [1,0,0,0],
+            final_loss_weights=list(WEIGHTS) if args.mode=='region' else [1,0,0,0],
+            initial_loss_weights=list(INITIAL_WEIGHTS) if args.mode=='region' and args.weight_schedule=='staged' else (list(WEIGHTS) if args.mode=='region' else [1,0,0,0]),
+            weights_by_epoch=[list(epoch_weights(e,args.weight_schedule,args.warmup_epochs,args.ramp_epochs))
+                if args.mode=='region' else [1,0,0,0] for e in range(1,args.epochs+1)],
             clip=0.5,decay_epoch=30,decay_rate=0.1,optimizer='Adam')
         files=list(Path('model').glob('*.py'))+[
             Path(x) for x in ['train_region_supervision.py','region_supervision_data.py',
-             'region_supervision_loss.py','weak_data.py','weak_loss.py','utils.py',
+             'region_supervision_loss.py','region_weight_schedule.py','weak_data.py','weak_loss.py','utils.py',
              'model/pvt_v2_b2.pth']]+[prep/x for x in ['preparation.json','train.json','val.json']]
         config['hashes']={str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in files}
         (out/'config.json').write_text(json.dumps(config,indent=2))
@@ -75,6 +86,9 @@ def main():
         best=float('inf')
         with (out/'epochs.jsonl').open('w') as log:
             for epoch in range(1,args.epochs+1):
+                weights=(epoch_weights(epoch,args.weight_schedule,args.warmup_epochs,args.ramp_epochs)
+                    if args.mode=='region' else (1.,0.,0.,0.))
+                print('LOSS_WEIGHTS',epoch,weights,flush=True)
                 adjust_lr(optimizer,args.lr,epoch,0.1,30)
                 model.train(); totals=[]; raw_terms=[]; coverage=[]
                 for step,batch in enumerate(loader,1):
@@ -84,7 +98,7 @@ def main():
                     if args.mode=='region':
                         rm=batch['region_masks'].cuda()
                         loss,terms=region_supervision_loss(logits,target,valid,
-                            batch['region_targets'].cuda(),rm)
+                            batch['region_targets'].cuda(),rm,weights=weights)
                         coverage.append(rm.mean(dim=(0,2,3)).cpu().tolist())
                     else:
                         loss=partial_bce_with_logits(logits,target,valid)
@@ -107,7 +121,9 @@ def main():
                 score=numerator/denominator
                 if not np.isfinite(score): raise RuntimeError('Nonfinite validation loss')
                 row=dict(epoch=epoch,train_total=float(np.mean(totals)),
+                    loss_weights=list(weights),
                     raw_BCE_terms=np.mean(raw_terms,axis=0).tolist(),
+                    weighted_BCE_terms=(np.mean(raw_terms,axis=0)*np.asarray(weights)).tolist(),
                     expanded_coverage=np.mean(coverage,axis=0).tolist() if coverage else [],
                     val_scribble_BCE=score)
                 print(row,flush=True); log.write(json.dumps(row)+'\n'); log.flush()
