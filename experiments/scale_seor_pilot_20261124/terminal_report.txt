@@ -1,0 +1,90 @@
+graduatesofzypscut@user-SYS-4029GP-TRT2:~$ P="/home/data2/XintongHu/GeleNet"
+graduatesofzypscut@user-SYS-4029GP-TRT2:~$
+graduatesofzypscut@user-SYS-4029GP-TRT2:~$ "$P/envs/gelenet_repro/bin/python" - <<'PY'
+> import csv
+> import json
+> from pathlib import Path
+>
+> root = Path("/home/data2/XintongHu/GeleNet/evaluation_runs/v3_scale_seor_eval_nwJedHZA/results")
+> metrics = ("S", "wF", "maxF", "maxE", "MAE")
+>
+> print("===== 全部30组结果 =====")
+> print("mode       checkpoint epoch       S       wF     maxF     maxE      MAE")
+> with (root/"all_checkpoints.csv").open() as source:
+>     rows = list(csv.DictReader(source))
+> for row in rows:
+>     values = " ".join(f"{float(row[key]):.5f}" for key in metrics)
+>     print(f"{row['mode']:10} {row['selection']:10} {int(row['epoch']):3}  {values}")
+>
+> print("\n===== 后5个checkpoint：均值 +/- 标准差 =====")
+> stability = json.loads((root/"late_window_stability.json").read_text())
+> for mode, result in stability["results"].items():
+>     values = "  ".join(
+>         f"{key}={result[key]['mean']:.5f}+/-{result[key]['std_population']:.5f}"
+>         for key in metrics)
+>     print(mode, values)
+>
+> print("\n===== 逐图尺度权重：均值、标准差，顺序10/20/40 =====")
+> for mode in ("fixed20", "uniform", "adaptive"):
+>     for selection in ("best_val", "epoch_44"):
+>         data = json.loads((root/mode/selection/"gate_diagnostics.json").read_text())
+>         for split in ("validation", "test"):
+>             stats = data[split]
+>             mean = [round(value, 6) for value in stats.get("mean", [])]
+>             std = [round(value, 6) for value in stats.get("std", [])]
+>             print(mode, selection, split,
+>                   "三候选有效图数=", stats["all_three_active"],
+>                   "mean=", mean, "std=", std)
+> PY
+===== 全部30组结果 =====
+mode       checkpoint epoch       S       wF     maxF     maxE      MAE
+fixed20    best_val    13  0.49559 0.18061 0.26632 0.51089 0.15831
+uniform    best_val    20  0.51106 0.19462 0.27167 0.51513 0.14091
+adaptive   best_val    13  0.51246 0.18792 0.27047 0.53521 0.14295
+fixed20    epoch_44    44  0.51845 0.20324 0.26881 0.50851 0.13445
+uniform    epoch_44    44  0.52623 0.20595 0.27384 0.52019 0.12335
+adaptive   epoch_44    44  0.53104 0.20836 0.28754 0.54243 0.12165
+fixed20    epoch_4      4  0.46561 0.14396 0.27190 0.54143 0.21870
+fixed20    epoch_9      9  0.47659 0.16150 0.24650 0.48772 0.19092
+fixed20    epoch_14    14  0.49271 0.17739 0.25724 0.49737 0.16626
+fixed20    epoch_19    19  0.51984 0.19147 0.26711 0.53366 0.12944
+fixed20    epoch_24    24  0.52318 0.19037 0.23975 0.52357 0.12377
+fixed20    epoch_29    29  0.52248 0.20416 0.27385 0.51640 0.13041
+fixed20    epoch_34    34  0.51745 0.20029 0.26724 0.50841 0.13577
+fixed20    epoch_39    39  0.51917 0.20267 0.26894 0.51180 0.13285
+uniform    epoch_4      4  0.47175 0.14459 0.27669 0.55848 0.21360
+uniform    epoch_9      9  0.47617 0.16135 0.24688 0.48826 0.19561
+uniform    epoch_14    14  0.51161 0.18738 0.26613 0.52418 0.14091
+uniform    epoch_19    19  0.50803 0.19062 0.26841 0.51116 0.14524
+uniform    epoch_24    24  0.51397 0.18667 0.25535 0.52440 0.13033
+uniform    epoch_29    29  0.53044 0.20839 0.28142 0.53169 0.11822
+uniform    epoch_34    34  0.52671 0.20496 0.27487 0.52447 0.12335
+uniform    epoch_39    39  0.52853 0.20764 0.27712 0.52547 0.12190
+adaptive   epoch_4      4  0.47919 0.14824 0.28288 0.57011 0.20417
+adaptive   epoch_9      9  0.48765 0.16784 0.26581 0.51264 0.17657
+adaptive   epoch_14    14  0.51591 0.19751 0.28791 0.53363 0.13927
+adaptive   epoch_19    19  0.51830 0.19532 0.27234 0.52734 0.12569
+adaptive   epoch_24    24  0.51275 0.19736 0.27006 0.51119 0.13657
+adaptive   epoch_29    29  0.52409 0.19046 0.27017 0.54761 0.13008
+adaptive   epoch_34    34  0.52579 0.19755 0.27862 0.54560 0.12849
+adaptive   epoch_39    39  0.52943 0.20482 0.28475 0.54492 0.12372
+
+===== 后5个checkpoint：均值 +/- 标准差 =====
+fixed20 S=0.52015+/-0.00227  wF=0.20014+/-0.00505  maxF=0.26372+/-0.01219  maxE=0.51374+/-0.00571  MAE=0.13145+/-0.00424
+uniform S=0.52518+/-0.00580  wF=0.20272+/-0.00812  maxF=0.27252+/-0.00897  maxE=0.52524+/-0.00370  MAE=0.12343+/-0.00393
+adaptive S=0.52462+/-0.00643  wF=0.19971+/-0.00627  maxF=0.27823+/-0.00723  maxE=0.53835+/-0.01368  MAE=0.12810+/-0.00522
+
+===== 逐图尺度权重：均值、标准差，顺序10/20/40 =====
+fixed20 best_val validation 三候选有效图数= 140 mean= [0.0, 1.0, 0.0] std= [0.0, 0.0, 0.0]
+fixed20 best_val test 三候选有效图数= 598 mean= [0.0, 1.0, 0.0] std= [0.0, 0.0, 0.0]
+fixed20 epoch_44 validation 三候选有效图数= 140 mean= [0.0, 1.0, 0.0] std= [0.0, 0.0, 0.0]
+fixed20 epoch_44 test 三候选有效图数= 598 mean= [0.0, 1.0, 0.0] std= [0.0, 0.0, 0.0]
+uniform best_val validation 三候选有效图数= 140 mean= [0.333333, 0.333333, 0.333333] std= [0.0, 0.0, 0.0]
+uniform best_val test 三候选有效图数= 598 mean= [0.333333, 0.333333, 0.333333] std= [0.0, 0.0, 0.0]
+uniform epoch_44 validation 三候选有效图数= 140 mean= [0.333333, 0.333333, 0.333333] std= [0.0, 0.0, 0.0]
+uniform epoch_44 test 三候选有效图数= 598 mean= [0.333333, 0.333333, 0.333333] std= [0.0, 0.0, 0.0]
+adaptive best_val validation 三候选有效图数= 140 mean= [0.334981, 0.331994, 0.333024] std= [0.000555, 0.000172, 0.000503]
+adaptive best_val test 三候选有效图数= 598 mean= [0.334973, 0.332015, 0.333011] std= [0.000539, 0.000159, 0.000486]
+adaptive epoch_44 validation 三候选有效图数= 140 mean= [0.329874, 0.333928, 0.336198] std= [0.000545, 0.00052, 0.000397]
+adaptive epoch_44 test 三候选有效图数= 598 mean= [0.329871, 0.333977, 0.336152] std= [0.000519, 0.000514, 0.000364]
+graduatesofzypscut@user-SYS-4029GP-TRT2:~$

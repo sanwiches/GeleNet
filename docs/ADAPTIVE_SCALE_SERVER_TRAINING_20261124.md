@@ -2,8 +2,9 @@
 
 Evidence: user-pasted terminal output received on 2026-11-24 (Asia/Shanghai).
 This records server-reported artifacts; the checkpoints and complete logs have
-not been downloaded or independently inspected. Dense saliency test scoring for
-this pilot has not yet been reported.
+not been downloaded or independently inspected. Dense saliency scoring was
+pending at this initial training-record stage. A subsequent terminal report
+confirms all 30 jobs completed; see [the evaluation report](ADAPTIVE_SCALE_EVALUATION_20261124.md).
 
 Run: `/home/data2/XintongHu/GeleNet/experiments/v3_scale_seor_train_mPOzDLop`.
 The batch status is `COMPLETED`; each mode status is `completed`, with an
@@ -70,7 +71,8 @@ single-run checkpoint variation, not multi-seed robustness. Test trajectories
 do not replace validation-based checkpoint selection.
 
 The runner requires a new output directory and does not implement resume.
-No completed benchmark metrics or full-1400 retraining are claimed here.
+Subsequent completed benchmark metrics are recorded separately in the linked
+evaluation report. Full-1400 retraining remains subsequent work.
 
 Four focused local standard-library tests cover primary-first job scheduling,
 best-validation selection and source/smoke checks, fallback-aware weight
