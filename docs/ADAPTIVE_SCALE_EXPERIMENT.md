@@ -2,6 +2,11 @@
 
 **数据划分与结果解释必读：** [为什么从1400全量训练改为1260训练加140内部验证，以及旧结果的比较边界](DATA_SPLIT_AND_COMPARISON_PROTOCOL.md)。此前已查看测试集结果；新增验证划分不能消除这一历史。
 
+Server update received 2026-11-24: all three matched modes completed 44 epochs.
+[Reported training results and frozen evaluation plan](ADAPTIVE_SCALE_SERVER_TRAINING_20261124.md)
+records best-validation and final checkpoints, the pending 30-job evaluation,
+and limits on interpreting near-uniform average gate weights.
+
 This is an experimental extension of fixed-level V3, inspired by learning scale weights in Attention to Scale (Chen et al., CVPR2016), https://openaccess.thecvf.com/content_cvpr_2016/html/Chen_Attention_to_Scale_CVPR_2016_paper.html . It mixes NAMLab membership priors rather than image-pyramid predictions. No performance improvement is claimed.
 
 ## Three matched modes
@@ -40,7 +45,7 @@ Inference-map preparation needs no GT: tools/prepare_scale_experiment.py --image
 
 ## Verification and limits
 
-Eight local CPU tests passed under torch2.8.0, NumPy/SciPy/Pillow and torchvision: direct original-KTM fixed20 equivalence with nonzero residual gamma, finite nonzero adaptive gradient, normalized weights and initial uniform equivalence, label-permuted duplicates, post-projection duplicates, image-dependent learned weights, invalid inputs, synthetic MAT fallback/split and real loader tensor shape/dtype. Sixteen packaged Python files parsed successfully. Tests isolate KTM without constructing the PVT backbone. The local environment lacks timm; no full-model initialization/forward, full CUDA training or real-server data smoke has run. Server torch1.9.0 compatibility remains pending its smoke check. No new training metrics or adaptive-layer optimum has been established.
+Eight initial local CPU tests passed under torch2.8.0, NumPy/SciPy/Pillow and torchvision: direct original-KTM fixed20 equivalence with nonzero residual gamma, finite nonzero adaptive gradient, normalized weights and initial uniform equivalence, label-permuted duplicates, post-projection duplicates, image-dependent learned weights, invalid inputs, synthetic MAT fallback/split and real loader tensor shape/dtype. Sixteen packaged Python files parsed successfully. These initial checks isolated KTM without constructing PVT because the local environment lacked timm. Subsequent user-pasted server output reports that the eight tests, full-model three-step smoke checks, and all three 44-epoch runs completed in the server environment. See the dated server record for training values and remaining evaluation work; dense saliency improvement and an adaptive-layer optimum have not been established. Four additional standard-library tests cover the evaluation runner; local tests do not constitute a server benchmark run.
 
 ## New files
 
